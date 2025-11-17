@@ -258,21 +258,12 @@ Manual smoke test:
 - [ ] **`Task 2`**: More advanced algorithm detection.
 - [ ] **`Task 3`**: More userfriendly UI.
 
----
-
-## 🔰 Contributing
-
-- **💬 [Join the Discussions](https://github.com/sandeepsalwan1/PhishKill/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/sandeepsalwan1/PhishKill/issues)**: Submit bugs found or log feature requests for the `PhishKill` project.
-- **💡 [Submit Pull Requests](https://github.com/sandeepsalwan1/PhishKill/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
-<details closed>
 <summary>Contributing Guidelines</summary>
 
 1. **Fork the Repository**: Start by forking the project repository to your github account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
    ```sh
-   git clone https://github.com/sandeepsalwan1/PhishKill
+   git clone https://github.com/wasvaibhav/Phishing-Kill
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
@@ -295,8 +286,7 @@ Manual smoke test:
 <summary>Contributor Graph</summary>
 <br>
 <p align="left">
-   <a href="https://github.com{/sandeepsalwan1/PhishKill/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=sandeepsalwan1/PhishKill">
+   <a href="https://github.com{/wasvaibhav/PhishingKill/}graphs/contributors">
    </a>
 </p>
 </details>
@@ -308,6 +298,3 @@ Manual smoke test:
 This project is released under the [MIT License](https://opensource.org/licenses/MIT/). For more details, please refer to the [LICENSE](./LICENSE) file. 
 
 ---
-#   P h i s h i n g - K i l l  
- #   P h i s h i n g - K i l l  
- 
