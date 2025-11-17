@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phish Kill</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .gradient { background: linear-gradient(135deg, #111827 0%, #0b1220 100%); }
+    </style>
+  </head>
+  <body
+    class="leading-normal tracking-normal text-white gradient"
+    style="font-family: 'Source Sans Pro', sans-serif;"
+  >
+    <!--Nav-->
+    <nav id="header" class="fixed w-full z-30 top-0 text-white bg-gray-900">
+      <div
+        class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2"
+      >
+        <div class="pl-4 flex items-center">
+          <a
+            class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            href="#"
+          >
+            Phish Kill
+          </a>
+        </div>
+        <!-- Add navigation links -->
+        <div class="block lg:hidden pr-4">
+          <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-400">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 lg:bg-transparent text-black p-4 lg:p-0 z-20"
+          id="nav-content"
+        >
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a
+                class="inline-block py-2 px-4 text-white font-bold no-underline"
+                href="#features"
+              >
+                Features
+              </a>
+            </li>
+            <li class="mr-3">
+              <a
+                class="inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                href="#about"
+              >
+                About Us
+              </a>
+            </li>
+            <li class="mr-3">
+              <a
+                class="inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                href="#contact"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--Hero-->
+    <div class="pt-24">
+      <div
+        class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center"
+      >
+        <!--Left Col-->
+        <div
+          class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left"
+        >
+          <h1 class="my-4 text-5xl font-bold leading-tight">Phish Kill</h1>
+          <p class="leading-normal text-2xl mb-8">Paste email content and get an instant phishing risk assessment.</p>
+          <div class="w-full bg-gray-800 rounded-lg p-4 border border-gray-700">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-300">Overall Risk</span>
+              <span id="riskValue" class="text-2xl font-bold">—</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded h-3 mt-3">
+              <div id="riskBar" class="bg-green-500 h-3 rounded" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+        <!--Right Col-->
+        <div class="w-full md:w-3/5 py-6 text-center">
+          <textarea
+            id="emailContent"
+            class="w-full p-4 border border-gray-700 bg-gray-800 rounded mb-4 h-48 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            placeholder="Paste your email content here..."
+          ></textarea>
+          <div class="flex space-x-3">
+            <button
+              id="checkSpam"
+              class="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none"
+            >
+              Analyze Email
+            </button>
+            <button
+              id="useSample"
+              class="px-4 py-2 rounded border border-gray-700 hover:bg-gray-800"
+            >
+              Use Sample
+            </button>
+            <button
+              id="clearText"
+              class="px-4 py-2 rounded border border-gray-700 hover:bg-gray-800"
+            >
+              Clear
+            </button>
+          </div>
+          <div id="loading" class="text-gray-400 text-sm mt-3 hidden">Analyzing…</div>
+        </div>
+      </div>
+    </div>
+
+    <!--Spam Check Results-->
+    <div class="container mx-auto px-3 pt-10">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div id="summary" class="p-4 rounded bg-gray-800 border border-gray-700 hidden">
+            <h2 class="text-xl font-semibold">Summary</h2>
+            <p id="risk" class="mt-2 text-gray-300"></p>
+          </div>
+          <div id="details" class="mt-4 p-4 rounded bg-gray-800 border border-gray-700 hidden">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold">Indicators</h2>
+              <button id="copyIndicators" class="text-sm text-blue-400 hover:text-blue-300">Copy</button>
+            </div>
+            <ul id="indicators" class="list-disc list-inside text-gray-300 mt-2"></ul>
+          </div>
+        </div>
+        <div>
+          <div class="p-4 rounded bg-gray-800 border border-gray-700">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold">Recent Analyses</h2>
+              <button id="refreshHistory" class="text-sm text-blue-400 hover:text-blue-300">Refresh</button>
+            </div>
+            <ul id="historyList" class="mt-3 space-y-3"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Features Section-->
+    <section id="features" class="bg-gray-800 py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-white mb-8">Features</h2>
+        <div class="flex flex-wrap">
+          <div class="w-full md:w-1/3 text-center mb-8">
+            <div class="text-5xl text-blue-500 mb-4">
+              🔍
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Accurate Detection</h3>
+            <p class="text-gray-300">
+              Our tool uses advanced algorithms to accurately detect spam indicators in your emails.
+            </p>
+          </div>
+          <div class="w-full md:w-1/3 text-center mb-8">
+            <div class="text-5xl text-blue-500 mb-4">
+              ⚡️
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Fast Processing</h3>
+            <p class="text-gray-300">
+              Get instant results with our lightning-fast spam checking system.
+            </p>
+          </div>
+          <div class="w-full md:w-1/3 text-center mb-8">
+            <div class="text-5xl text-blue-500 mb-4">
+              🔒
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Secure</h3>
+            <p class="text-gray-300">
+              We ensure your email content is processed securely and confidentially.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--About Us Section-->
+    <section id="about" class="bg-gray-900 py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-6">About Us</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Phish Kill is dedicated to helping you maintain a clean and secure inbox. Our mission is to empower individuals and businesses by providing reliable tools to identify and eliminate spam and phishing attempts in their email communications.
+        </p>
+      </div>
+    </section>
+
+    <!--Contact Section-->
+    <section id="contact" class="bg-gray-800 py-12">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-white mb-8">Contact Us</h2>
+        <div class="flex justify-center">
+          <form class="w-full max-w-lg">
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2" for="contact-name">
+                  Name
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600"
+                  id="contact-name"
+                  type="text"
+                  placeholder="Your Name"
+                />
+              </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2" for="contact-email">
+                  Email
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600"
+                  id="contact-email"
+                  type="email"
+                  placeholder="Your Email"
+                />
+              </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2" for="contact-message">
+                  Message
+                </label>
+                <textarea
+                  class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-600 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600"
+                  id="contact-message"
+                  rows="5"
+                  placeholder="Your Message"
+                ></textarea>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <button
+                type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer id="footer" class="bg-gray-900 text-gray-400 py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 Phish Kill. All rights reserved.</p>
+        <div class="mt-4">
+          <a href="#" class="mx-2 hover:text-white">Privacy Policy</a>
+          <a href="#" class="mx-2 hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const emailEl = document.getElementById('emailContent');
+      const checkBtn = document.getElementById('checkSpam');
+      const sampleBtn = document.getElementById('useSample');
+      const clearBtn = document.getElementById('clearText');
+      const loadingEl = document.getElementById('loading');
+      const riskEl = document.getElementById('risk');
+      const riskValueEl = document.getElementById('riskValue');
+      const riskBarEl = document.getElementById('riskBar');
+      const indicatorsList = document.getElementById('indicators');
+      const copyBtn = document.getElementById('copyIndicators');
+      const historyList = document.getElementById('historyList');
+      const refreshHistoryBtn = document.getElementById('refreshHistory');
+
+      checkBtn.addEventListener('click', async () => {
+        const text = emailEl.value.trim();
+        if (!text) { alert('Please paste some email content first.'); return; }
+        setLoading(true);
+        try {
+          const res = await fetch('/api/classify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Unexpected error');
+          renderResults(data.risk, data.indicators);
+          await loadHistory();
+        } catch (e) {
+          alert(e.message);
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      sampleBtn.addEventListener('click', () => {
+        emailEl.value = `Subject: Important - Verify Your Account Immediately\n\nDear User,\n\nWe noticed unusual activity on your account. To secure your account, please verify your identity by clicking the link below within 24 hours or your account will be suspended.\n\nVerify now: http://security-update.example-login.com/verify\n\nThank you,\nSecurity Team`;
+      });
+
+      clearBtn.addEventListener('click', () => {
+        emailEl.value = '';
+      });
+
+      copyBtn.addEventListener('click', async () => {
+        const items = Array.from(indicatorsList.querySelectorAll('li')).map(li => li.textContent);
+        if (items.length === 0) return;
+        await navigator.clipboard.writeText(items.join('\n'));
+      });
+
+      refreshHistoryBtn.addEventListener('click', loadHistory);
+
+      function setLoading(isLoading) {
+        loadingEl.classList.toggle('hidden', !isLoading);
+        checkBtn.disabled = isLoading;
+        checkBtn.classList.toggle('opacity-60', isLoading);
+      }
+
+      function renderResults(risk, indicators) {
+        // Summary
+        document.getElementById('summary').classList.remove('hidden');
+        riskEl.textContent = `Risk: ${risk}%`;
+
+        // Gauge
+        riskValueEl.textContent = `${risk}%`;
+        riskBarEl.style.width = `${Math.max(0, Math.min(100, risk))}%`;
+        const color = risk < 30 ? 'bg-green-500' : (risk < 70 ? 'bg-yellow-500' : 'bg-red-600');
+        riskBarEl.classList.remove('bg-green-500','bg-yellow-500','bg-red-600');
+        riskBarEl.classList.add(color);
+
+        // Indicators
+        indicatorsList.innerHTML = '';
+        (indicators || []).forEach((indicator, index) => {
+          const li = document.createElement('li');
+          li.textContent = `${index + 1}. ${indicator}`;
+          indicatorsList.appendChild(li);
+        });
+        document.getElementById('details').classList.remove('hidden');
+      }
+
+      async function loadHistory() {
+        try {
+          const res = await fetch('/api/history?limit=20');
+          const data = await res.json();
+          const items = data.items || [];
+          historyList.innerHTML = '';
+          items.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'p-3 rounded bg-gray-900 border border-gray-700 hover:border-gray-600 cursor-pointer';
+            const short = (item.email_text || '').slice(0, 80).replace(/\n/g, ' ');
+            li.innerHTML = `<div class="flex items-center justify-between">
+              <span class="text-gray-300 truncate pr-3">${short}${short.length === 80 ? '…' : ''}</span>
+              <span class="text-sm ${item.risk < 30 ? 'text-green-400' : (item.risk < 70 ? 'text-yellow-400' : 'text-red-400')}">${item.risk}%</span>
+            </div>`;
+            li.addEventListener('click', () => {
+              renderResults(item.risk, item.indicators);
+              emailEl.value = item.email_text || '';
+            });
+            historyList.appendChild(li);
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      // Initial load
+      loadHistory();
+
+      // Mobile menu toggle
+      const navToggle = document.getElementById('nav-toggle');
+      const navContent = document.getElementById('nav-content');
+      navToggle.addEventListener('click', () => { navContent.classList.toggle('hidden'); });
+    </script>
+  </body>
+</html>
