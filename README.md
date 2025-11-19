@@ -1,5 +1,5 @@
-## PhishKill
-PhishKill is now a full-stack Flask app with a polished Tailwind UI, JSON API, SQLite history, and one-click deploy options (Heroku or Docker). It uses OpenAI to detect phishing indicators and provide a risk score.
+## Phishing Kill
+Phishing Kill is now a full-stack Flask app with a polished Tailwind UI, JSON API, SQLite history, and one-click deploy options (Heroku or Docker). It uses OpenAI to detect phishing indicators and provide a risk score.
 
 <p align="center">
   <img src="resources/example.jpg" alt="Example Image" width="100%">
@@ -9,7 +9,7 @@ PhishKill is now a full-stack Flask app with a polished Tailwind UI, JSON API, S
 <p align="center">
     <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" align="center" width="30%">
 </p>
-<p align="center"><h1 align="center">PHISHKILL</h1></p>
+<p align="center"><h1 align="center">PHISHINGKILL</h1></p>
 <p align="center">
 	<em>Shield Your Inbox, Block the Bait!</em>
 </p>
@@ -46,7 +46,7 @@ PhishKill is now a full-stack Flask app with a polished Tailwind UI, JSON API, S
 
 ## 📍 Overview
 
-PhishKill is an innovative tool designed to enhance email security by detecting and assessing phishing risks. Utilizing advanced AI technology, it analyzes email content for potential threats, providing users with a risk assessment and practical advice on handling suspicious emails. Ideal for individuals and organizations aiming to bolster their cybersecurity measures, PhishKill offers a user-friendly interface and robust protection against email-based threats.
+Phishing Kill is an innovative tool designed to enhance email security by detecting and assessing phishing risks. Utilizing advanced AI technology, it analyzes email content for potential threats, providing users with a risk assessment and practical advice on handling suspicious emails. Ideal for individuals and organizations aiming to bolster their cybersecurity measures, PhishKill offers a user-friendly interface and robust protection against email-based threats.
 
 ---
 
@@ -68,7 +68,7 @@ PhishKill is an innovative tool designed to enhance email security by detecting 
 ## 📁 Project Structure
 
 ```sh
-└── PhishKill/
+└── PhishingKill/
     ├── EmailPhishingScript
     │   ├── Mail1.txt
     │   ├── Mail2.txt
@@ -91,7 +91,7 @@ PhishKill is an innovative tool designed to enhance email security by detecting 
 
 ### 📂 Project Index
 <details open>
-	<summary><b><code>PHISHKILL/</code></b></summary>
+	<summary><b><code>PHISHINGKILL/</code></b></summary>
 	<details> <!-- __root__ Submodule -->
 		<summary><b>__root__</b></summary>
 		<blockquote>
@@ -116,43 +116,43 @@ PhishKill is an innovative tool designed to enhance email security by detecting 
 		<blockquote>
 			<table>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/Main.py'>Main.py</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/Main.py'>Main.py</a></b></td>
 				<td>- Main.py serves as the core component of an email phishing detection system, utilizing OpenAI's GPT-3.5-turbo model<br>- It processes user-inputted email content, evaluates the likelihood of phishing, and records the AI-generated risk assessment and indicators to a results file for review.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/results.txt'>results.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/results.txt'>results.txt</a></b></td>
 				<td>- Analyzes and assesses the risk level of emails for phishing threats<br>- The script evaluates the content, subject, language, and tone of emails, along with checking for suspicious links or attachments<br>- It provides a risk probability and advises on caution, enhancing email security within the system.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/responseToMail1.txt'>responseToMail1.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/responseToMail1.txt'>responseToMail1.txt</a></b></td>
 				<td>- Analyzes potential phishing threats in emails by evaluating risk factors such as urgent language, claims of unusual activity, requests for identity verification, and suspicious links<br>- The analysis concludes with a high likelihood of phishing, aiding in the identification and prevention of email-based security threats within the system.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/Mail1.txt'>Mail1.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/Mail1.txt'>Mail1.txt</a></b></td>
 				<td>- Mail1.txt serves as a phishing simulation template within the EmailPhishingScript project, designed to educate users on recognizing fraudulent emails<br>- It mimics a security alert from a bank, instructing recipients to verify their account through a deceptive link, thereby highlighting common tactics used by cybercriminals to compromise personal information.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/app.py'>app.py</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/app.py'>app.py</a></b></td>
 				<td>- EmailPhishingScript/app.py serves as the core interface for a web application that assesses email content to determine phishing risks<br>- Utilizing the OpenAI API, it processes user-submitted emails, evaluates potential phishing indicators, and outputs risk assessments<br>- The application also records responses for further analysis.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/responseToMail2.txt'>responseToMail2.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/responseToMail2.txt'>responseToMail2.txt</a></b></td>
 				<td>- EmailPhishingScript/responseToMail2.txt evaluates the security risk of a work-related email, assigning a low risk percentage<br>- It assesses the email's content, tone, sender's credentials, and absence of suspicious requests, concluding minimal phishing indicators<br>- Users are advised to verify sender details and exercise caution with links and attachments.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/Procfile'>Procfile</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/Procfile'>Procfile</a></b></td>
 				<td>- Specifies the command that a Heroku-based application should execute to start the server, using Python to run the script named app.py<br>- This setup is crucial for deploying the web application component of the EmailPhishingScript project, ensuring it is accessible and operational on the Heroku cloud platform.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/requirements.txt'>requirements.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/requirements.txt'>requirements.txt</a></b></td>
 				<td>- Requirements.txt in the EmailPhishingScript directory specifies dependencies essential for the project's operation<br>- It includes Flask for web application framework, python-dotenv for environment variable management, and openai for integrating AI functionalities<br>- These dependencies ensure the software's compatibility and functionality within the broader codebase architecture.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/test.py'>test.py</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/test.py'>test.py</a></b></td>
 				<td>- EmailPhishingScript/test.py serves as a diagnostic tool within the broader codebase, verifying the operational status of the local development environment<br>- It utilizes the OpenAI API to execute a simple test interaction, ensuring that the API key is correctly sourced from the environment and that the OpenAI client is properly configured and responsive.</td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/Mail2.txt'>Mail2.txt</a></b></td>
+				<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/Mail2.txt'>Mail2.txt</a></b></td>
 				<td>- EmailPhishingScript/Mail2.txt serves as a simulated phishing email within the security training module<br>- It mimics a typical workplace communication about an upcoming meeting, complete with details like date, time, and location, crafted to test employee vigilance against phishing attempts in a controlled environment.</td>
 			</tr>
 			</table>
@@ -161,7 +161,7 @@ PhishKill is an innovative tool designed to enhance email security by detecting 
 				<blockquote>
 					<table>
 					<tr>
-						<td><b><a href='https://github.com/sandeepsalwan1/PhishKill/blob/master/EmailPhishingScript/templates/index.html'>index.html</a></b></td>
+						<td><b><a href='https://github.com/wasvaibhav/PhishingKill/blob/master/EmailPhishingScript/templates/index.html'>index.html</a></b></td>
 						<td>- Serves as the primary user interface for the Phish Kill application, providing a web-based platform where users can input and analyze email content for spam indicators<br>- It features navigation, spam checking functionality, and sections detailing the app's features, about us information, and contact form.</td>
 					</tr>
 					</table>
@@ -298,7 +298,8 @@ Manual smoke test:
 This project is released under the [MIT License](https://opensource.org/licenses/MIT/). For more details, please refer to the [LICENSE](./LICENSE) file. 
 
 ---
-https://phishkill1-49hpvnzyj-ss-projects-9bcf5fe7.vercel.app/#contact
+https://phishingkill1-49hpvnzyj-ss-projects-9bcf5fe7.vercel.app/#contact
 
-https://phishkill1-49hpvnzyj-ss-projects-9bcf5fe7.vercel.app/#contact
+https://phishingkill1-49hpvnzyj-ss-projects-9bcf5fe7.vercel.app/#contact
+
 
